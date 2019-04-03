@@ -16,9 +16,12 @@
         <p>
             <input type="text" v-model='message'>
         </p>
+        <!-- 绑定属性 v-bind:属性名字=“data里面的值” -->
         <p v-bind:title="messageB">悬停几秒</p>
         <p v-if="seen">NOW U SEE ME BUT IF THE 'SEEN' PORPERTY IS FALSE</p>
         <!-- 
+            v-if判断后面的也是data里面的值
+
             这不对
         // console.log(app.data.seen)
         //
