@@ -2,8 +2,10 @@
 Vue.component('todo-item',{
     // 组件接受prop 灵活起来
     // 相当于arguments 
-    props:['todo'],
-    template:'<li>{{ todo.text }}</li>'
+    // 在v-bind里面传入
+    // v-bind:todo=...
+    props:['todo','ke'],
+    template:'<li>{{ todo.text }} {{ke}}</li>'
 })
 
 
@@ -11,7 +13,7 @@ Vue.component('todo-item',{
 let app=new Vue({
     el:'#app',
     data:{
-        message: 'Hello Vue ',
+        message: 'Hello　　　Vue ',
         messageB: '页面加载于 ' + new Date().toLocaleString(),
         seen:true,
         theNames:[

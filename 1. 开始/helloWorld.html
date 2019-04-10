@@ -12,8 +12,10 @@
 <body>
     <div id="app">
         {{ message }}
+        <!-- v-on:method里直接选 -->
         <button v-on:click='reverseMess'>点我</button>
         <p>
+            <!-- v-model作为模型与message双向绑定 -->
             <input type="text" v-model='message'>
         </p>
         <!-- 绑定属性 v-bind:属性名字=“data里面的值” -->
@@ -34,7 +36,7 @@
         <todo-item
         v-for='i in componentList'
         v-bind:todo='i'
-        v-bind:id='i.id'
+        v-bind:ke='i.id'
         ></todo-item>
     </div>
     <script src='helloWorld.js'></script>
