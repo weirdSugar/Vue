@@ -76,4 +76,10 @@ new Vue({
    *    生命周期钩子的this上下文指向调用ta的Vue实例
    *    还有其他的一些钩子 在生命周期不同时期调用
    *    比如 mounted、updated、destroyed
+   * 
+   *    箭头函数没有this 会作为变量一直向上级词法作用域查找结果找不见
+   *    所以不要在选项属性或者回调上使用箭头函数
+   *    比如 created:()=>console.log('a:'+this.a)
+   *         vm.$watch('a',()=>{....})
+   *    
    */
