@@ -58,7 +58,8 @@
  *          从2.6开始，可用方括号括起来的JS表达式作为一个指令的参数
  *          <a v-bind:[attributeName]='val'></a>
  *          这里的attributeName会被作为JS表达式动态求值
- *          例如Vue实例有一个data属性attribute值为href则这个绑定等价于v-bind:href
+ *          例如Vue实例有一个data属性attribute值为href
+ *          则这个绑定等价于v-bind:href
  * 
  *          动态参数预期会求出一个字符串 异常情况下为null 视为移除绑定
  * 
@@ -70,5 +71,15 @@
  *          另外直接在HTML文件里写模板 浏览器会把属性名全部转换为小写：
  *          在 DOM 中使用模板会被转换为 v-bind:[someattr]
  *          <a v-bind:[someAttr]="value"> ... </a>
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ *      #修饰符
+ *          用 . 指明的特殊后缀用于特殊的绑定操作
+ *          比如 v-on:click.prevent 
+ *          告诉v-on指令触发的事件得是event,preventDefault()
  */        
 
