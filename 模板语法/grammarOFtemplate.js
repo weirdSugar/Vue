@@ -81,5 +81,24 @@
  *          用 . 指明的特殊后缀用于特殊的绑定操作
  *          比如 v-on:click.prevent 
  *          告诉v-on指令触发的事件得是event,preventDefault()
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ *      #简写
+ *          v-bind和v-on这两个最常用的指令有简写
+ * 
+ * 
+ *          <!-- 完整语法 -->                   <!-- 缩写 -->
+ *          <a v-bind:href="url">...</a>       <a :href="url">...</a>
+ * 
+ * 
+ * 
+ *          <!-- 完整语法 -->                   <!-- 缩写 -->
+ *          <a v-on:click="doSth">...</a>      <a @click="doSth">...</a>
+ *         
  */        
 
