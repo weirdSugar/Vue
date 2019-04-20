@@ -1,7 +1,7 @@
 
    
        
-#文本
+# 文本
 
     Mustache语法 
     <span>{{msg}}</msg>
@@ -12,7 +12,7 @@
   
 
 
-#原始HTML
+# 原始HTML
 
     双大括号会解释为普通文本非HTML代码（比如nbsp;）
     v-html指令
@@ -34,7 +34,7 @@
   
 
 
-#属性
+# 属性
 
     v-bind指令
         <button v-bind:disable='isBtnDisable'></button>
@@ -46,7 +46,7 @@
 
 
 
-#使用JS表达式
+# 使用JS表达式
 
     所有数据绑定都提供了完整的JS表达式支持比如
         {{num+1}}
@@ -65,7 +65,7 @@
   
   
   
-#动态参数
+# 动态参数
 
    从2.6开始，可用方括号括起来的JS表达式作为一个指令的参数
     <a v-bind:[attributeName]='val'></a>
@@ -89,7 +89,7 @@
   
   
   
-#修饰符
+# 修饰符
 
     用 . 指明的特殊后缀用于特殊的绑定操作
     比如 v-on:click.prevent 
@@ -101,7 +101,7 @@
   
   
   
-#简写
+# 简写
 
            v-bind和v-on这两个最常用的指令有简写
   
