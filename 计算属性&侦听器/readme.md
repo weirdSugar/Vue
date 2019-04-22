@@ -47,7 +47,7 @@
 
 
 
-# **实质**：
+## **实质**：
 === 
                   vue实例里面专门computed：{}，里面放一堆专门计算的function
                   注意引用的时候直接computedFunc 不用加括号 computedFunc()
@@ -59,20 +59,22 @@
 
 
 
-# --与方法的不同--：
+## --与方法的不同--：
 ===
         讲道理可以通过调用方法也能达到同样效果
 
-                  ``` JS
-                  methods: {
-                      reversedMessage: function () {
-                          return this.message.split('').reverse().join('')
-                      }
-                  }
-                  ```
-                  ``` HTML
-                  <p>Reversed message: "{{ reversedMessage() }}"</p>
-                  ```
+                 ``` JS
+                 methods: {
+                     reversedMessage: function () {
+                         return this.message.split('').reverse().join('')
+                     }
+                 }
+                 ```
+
+                 ``` HTML
+                 <p>Reversed message: "{{ reversedMessage() }}"</p>
+                 ```
+
         方法与计算属性的不同是：
                 计算属性是基于他们的响应式依赖进行缓存，
                 只在相关依赖发生改变（比如上例中的message）他们才会重新求值
