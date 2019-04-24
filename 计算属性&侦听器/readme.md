@@ -24,7 +24,7 @@
   </div>
 ```
 
-      ``` JS
+``` JS
       var vm = new Vue({
       el: '#example',
       data: {
@@ -38,7 +38,7 @@
               }
           }
       })
-      ```
+```
 
 
 * * *
@@ -47,10 +47,12 @@
 
 ## **实质**：
 
-=== 
-                  vue实例里面专门computed：{}，里面放一堆专门计算的function
-                  注意引用的时候直接computedFunc 不用加括号 computedFunc()
-                  因为computed里面的函数作为属性vm.computedFunc的getter函数
+
+        vue实例里面专门computed：{}，里面放一堆专门计算的function
+
+        注意引用的时候直接computedFunc 不用加括号 computedFunc()
+
+        因为computed里面的函数作为属性vm.computedFunc的getter函数
 
 
 
@@ -63,19 +65,18 @@
 
         讲道理可以通过调用方法也能达到同样效果
 
-
-                ``` JS
+``` JS
                  methods: {
                      reversedMessage: function () {
                          return this.message.split('').reverse().join('')
                      }
                  }
-                ```
+```
 
 
-                ``` HTML
+``` HTML
                 <p>Reversed message: "{{ reversedMessage() }}"</p>
-                ```
+```
 
 
         方法与计算属性的不同是：
@@ -96,9 +97,9 @@
 ## 
 **计算属性的setter**
 
-        计算属性默认只有getter，也可以设置一个setter
+  计算属性默认只有getter，也可以设置一个setter
 
-        ``` JS
+``` JS
         // ...
         computed: {
             fullName: {
@@ -115,7 +116,7 @@
                 }
         }
         // ...
-        ```
+```
 
 
 
@@ -188,6 +189,7 @@ var watchExampleVM = new Vue({
 
 
 ##需要強調的是
+
     当你有一些数据需要随着其它数据变动而变动时，你很容易滥用 
 `watch`
     然而，通常大多數情況下更好的做法是使用 
