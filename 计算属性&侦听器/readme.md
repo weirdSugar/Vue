@@ -2,11 +2,13 @@
 * * *
     模板中放入太多的逻辑会让模板过重且难以维护。例如：
 
-    ``` HTML
-    <div id="example">
-    {{ message.split('').reverse().join('') }}
-    </div>
-    ```
+
+``` HTML
+  <div id="example">
+  {{ message.split('').reverse().join('') }}
+  </div>
+```
+
     像任何这种复杂逻辑的应当使用计算属性
     
 
@@ -14,12 +16,13 @@
 
    ## 基础例子
 
-      ``` HTML
-      <div id="example">
-      <p>Original message: "{{ message }}"</p>
-      <p>Computed reversed message: "{{ reversedMessage }}"</p>
-      </div>
-      ```
+
+``` HTML
+  <div id="example">
+  <p>Original message: "{{ message }}"</p>
+  <p>Computed reversed message: "{{ reversedMessage }}"</p>
+  </div>
+```
 
       ``` JS
       var vm = new Vue({
@@ -38,12 +41,12 @@
       ```
 
 
-
-*** . ***
+* * *
 
 
 
 ## **实质**：
+
 === 
                   vue实例里面专门computed：{}，里面放一堆专门计算的function
                   注意引用的时候直接computedFunc 不用加括号 computedFunc()
@@ -51,13 +54,15 @@
 
 
 
-*** . ***
+* * *
 
 
 
-## --与方法的不同--：
+## 
+**与方法的不同**：
 
         讲道理可以通过调用方法也能达到同样效果
+
 
                 ``` JS
                  methods: {
@@ -67,9 +72,11 @@
                  }
                 ```
 
+
                 ``` HTML
                 <p>Reversed message: "{{ reversedMessage() }}"</p>
                 ```
+
 
         方法与计算属性的不同是：
                 计算属性是基于他们的响应式依赖进行缓存，
@@ -80,13 +87,14 @@
 
             
 
-*** . ***
+* * *
 
 
 
 
 
-## --计算属性的setter--
+## 
+**计算属性的setter**
 
         计算属性默认只有getter，也可以设置一个setter
 
@@ -113,10 +121,10 @@
 
 
 ==============
-==============
 
 
-## --计算属性vs侦听属性--
+## 
+**计算属性vs侦听属性**
 
     Vue的 `watch` 侦听属性，来观察和响应 Vue 实例上的数据变动
     当数据变化时执行异步或开销较大的操作 这个方式最有用
