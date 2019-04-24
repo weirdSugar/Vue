@@ -48,11 +48,11 @@
 ## **实质**：
 
 
-        vue实例里面专门computed：{}，里面放一堆专门计算的function
+vue实例里面专门computed：{}，里面放一堆专门计算的function
 
-        注意引用的时候直接computedFunc 不用加括号 computedFunc()
+注意引用的时候直接computedFunc 不用加括号 computedFunc()
 
-        因为computed里面的函数作为属性vm.computedFunc的getter函数
+因为computed里面的函数作为属性vm.computedFunc的getter函数
 
 
 
