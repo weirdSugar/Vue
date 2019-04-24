@@ -68,35 +68,35 @@
 
 
 ``` JS
-                 methods: {
-                     reversedMessage: function () {
-                         return this.message.split('').reverse().join('')
-                     }
-                 }
+    methods: {
+       reversedMessage: function () {
+         return this.message.split('').reverse().join('')
+      }
+    }
 ```
 
 
 ``` HTML
-                <p>Reversed message: "{{ reversedMessage() }}"</p>
+    <p>Reversed message: "{{ reversedMessage() }}"</p>
 ```
 
 
 方法与计算属性的不同是：
 
 
-    计算属性是基于他们的响应式依赖进行缓存，
+计算属性是基于他们的响应式依赖进行缓存，
 
 
-    只在相关依赖发生改变（比如上例中的message）他们才会重新求值
+只在相关依赖发生改变（比如上例中的message）他们才会重新求值
 
 
-    只要依赖没有改变
+只要依赖没有改变
 
 
-    多次访问computedFunc会立即返回之前的结果，（缓存）
+多次访问computedFunc会立即返回之前的结果，（缓存）
 
-    
-    而比如再访一次上例中的reverseMessage()文字便会又转回来了
+
+而比如再访一次上例中的reverseMessage()文字便会又转回来了
 
             
 
@@ -133,7 +133,8 @@
 
 
 
-==============
+* * *
+
 
 
 ## 
@@ -204,7 +205,8 @@ var watchExampleVM = new Vue({
 
 
 
-###需要強調的是
+需要強調的是
+---
 
 
 当你有一些数据需要随着其它数据变动而变动时，你很容易滥用 
