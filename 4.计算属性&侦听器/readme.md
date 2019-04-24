@@ -129,6 +129,11 @@ vue实例里面专门computed：{}，里面放一堆专门计算的function
         }
         // ...
 ```
+运行 
+`vm.fullName = 'John Doe'`
+setter 会被调用，
+
+vm.firstName 和 vm.lastName 也会相应地被更新。
 
 
 
