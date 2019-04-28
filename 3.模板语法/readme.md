@@ -17,7 +17,7 @@
     双大括号会解释为普通文本非HTML代码（比如nbsp;）
     v-html指令
        比如说data里面rawHtml属性为：
-       span style="color: red">This should be red.</span>
+       <span style="color: red">This should be red.</span>
 
        {{rawHtml}}
        <span v-html="rawHtml"></span>
