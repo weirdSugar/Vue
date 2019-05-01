@@ -9,24 +9,30 @@
     
 </head>
 <body>
-    <div id='youdong' >
+    <!-- <div id='youdong' >
 
         <div v-for="n in evenNumbers(numbers)">{{ n }}</div>
-    </div>
+    </div> -->
+    <button id='qqq'></button>
 </body>
 <script>
-    var app=new Vue({
-        el:'#youdong',
-        data:{
-            numbers: [1, 2, 3, 4, 5]
-        },
-        methods:{
-            evenNumbers: function (numbers) {
-                return numbers.filter(function (number) {
-                    return number % 2 === 0
-                })
-            }
-        }
-    })
+    var a=document.getElementById('qqq')
+    a.onclick=vvv
+    function vvv(mes){
+        window.alert(mes)
+    }
+    // var app=new Vue({
+    //     el:'#youdong',
+    //     data:{
+    //         numbers: [1, 2, 3, 4, 5]
+    //     },
+    //     methods:{
+    //         evenNumbers: function (numbers) {
+    //             return numbers.filter(function (number) {
+    //                 return number % 2 === 0
+    //             })
+    //         }
+    //     }
+    // })
     </script>
 </html>
