@@ -147,7 +147,7 @@ ___```@click.self.prevent```会阻止对自身的点击__
 
 ``` HTML
 <input v-on:keyup.enter="someMethod">
-<!-- 摁回车才会调用vm.someMethod() -->
+<!-- 摁 key 是 Enter 才会调用vm.someMethod() -->
 
 <input v-on:keyup.arrow-down="downFunc">
 <!-- KeyboardEvent.key里面是 ArrowDown -->
@@ -174,6 +174,13 @@ ___ keycode也支持__
 
 ___系统修饰符__ 以实现仅在按下相应按键时才触发鼠标或键盘事件的监听器。
 
+
+```.ctrl```
+```.alt```
+```.shift```
+```.meta``` ()
+
+
 ``` HTML
 <!-- Alt + C -->
 <input @keyup.alt.67="clear">
@@ -182,3 +189,23 @@ ___系统修饰符__ 以实现仅在按下相应按键时才触发鼠标或键�
 <div @click.ctrl="doSomething">Do something</div>
 ```
 
+```.exact```
+
+```HTML
+<!-- 即使 Alt 或 Shift 被一同按下时也会触发 -->
+<button @click.ctrl="onClick">A</button>
+
+<!-- 有且只有 Ctrl 被按下的时候才触发 -->
+<button @click.ctrl.exact="onCtrlClick">A</button>
+
+<!-- 没有任何系统修饰符被按下的时候才触发 -->
+<button @click.exact="onClick">A</button>
+```
+
+
+
+## 鼠标按钮修饰符
+
+```.left```
+```.right```
+```.middle```
