@@ -36,6 +36,39 @@
         >
         <label for="checkbox">{{ checked }}</label>
     </div> 
+
+    <div id="qq">
+    <select v-model="selected">
+        <option
+            disabled
+            value=""
+        >Please select one</option>
+        <option
+            v-for="option in options"
+        >
+            {{ option.text }}
+        </option>
+    </select>
+    <span>Selected: {{ selected }}</span></div>
+
+    <div id='zzz'>
+    <select v-model="selected">
+        <option
+            disabled
+            value=""
+        >Please select one</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>Selected: {{ selected }}</span></div>
+
+    <br>
+
+    <input
+        v-model.number="age"
+        type="number"
+    >
 </body>
 <script>
     var app=new Vue({
@@ -50,6 +83,23 @@
                     return number % 2 === 0
                 })
             }
+        }
+    })
+    new Vue({
+            el: '#qq',
+            data: {
+                selected: '',
+                options: [
+                    { text: 'One', value: 'A' },
+                    { text: 'Two', value: 'B' },
+                    { text: 'Three', value: 'C' }
+                ]
+            }
+        })
+    new Vue({
+        el:'#zzz',
+        data:{
+            selected:''
         }
     })
     </script>
