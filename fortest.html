@@ -40,26 +40,31 @@
     <div id="qq">
     <select v-model="selected">
         <option
-            disabled
-            value=""
-        >Please select one</option>
-        <option
             v-for="option in options"
+            v-bind:value="option.value"
         >
+            <!-- 如果不加v-bind:value span里面就显示的是option.text -->
             {{ option.text }}
         </option>
     </select>
-    <span>Selected: {{ selected }}</span></div>
+    <span>Selected: {{ selected }}</span>
+    </div>
 
+
+    <!-- 要是不给seleted初始值 默认不会选中任何东西 -->
+    <!-- 不给初始值就加个 option disable -->
     <div id='zzz'>
     <select v-model="selected">
         <option
             disabled
             value=""
         >Please select one</option>
-        <option>A</option>
-        <option>B</option>
-        <option>C</option>
+        <option >A</option>
+        <option >B</option>
+        <option >C</option>
+        <!-- <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option> -->
     </select>
     <span>Selected: {{ selected }}</span></div>
 
@@ -88,7 +93,7 @@
     new Vue({
             el: '#qq',
             data: {
-                selected: '',
+                selected: 'A',
                 options: [
                     { text: 'One', value: 'A' },
                     { text: 'Two', value: 'B' },
