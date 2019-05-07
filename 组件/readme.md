@@ -71,3 +71,57 @@ data:{
 ![组件树](https://cn.vuejs.org/images/components.png)
 
 
+使用组件前必须先注册，分别有 __全局注册__ 和 __局部注册__
+
+全局注册的组件可以用在其被注册之后的任何 (通过 new Vue) 新创建的 Vue 根实例，也包括其组件树中的所有子组件的模板中。
+
+
+
+
+
+#通过prop向组件传递数据
+
+prop是可以在组件上自定义的特性
+
+当一个值传递给一个 prop 特性的时候，它就变成了那个 __组件实例__ 的一个属性。
+
+``` JS
+Vue.component('blog-post', {
+  props: ['title'],
+  template: '<h3>{{ title }}</h3>'
+})
+```
+
+一个组件可以拥有任意数量的prop，任何值都可以传递
+
+注册好后就能在组件实例中访问这个值(`template:'...'`)，就像访问`data`一样
+
+上述模板写好后就可以从实例中作为一个自定义特性传递值了
+
+``` HTML
+<blog-post title="A"></blog-post>
+<blog-post title="B"></blog-post>
+<blog-post title="C"></blog-post>
+```
+
+
+聪明点还可以`v-bind`动态传递prop
+``` HTML
+<blog-post
+  v-for="post in posts"
+  v-bind:key="post.id"
+  v-bind:title="post.title"
+></blog-post>
+```
+``` JS
+new Vue({
+  el: '#blog-post-demo',
+  data: {
+    posts: [
+      { id: 1, title: 'A' },
+      { id: 2, title: 'B' },
+      { id: 3, title: 'C' }
+    ]
+  }
+})
+```
