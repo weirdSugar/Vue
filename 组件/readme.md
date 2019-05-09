@@ -74,7 +74,7 @@ data:{
 使用组件前必须先注册，分别有 __全局注册__ 和 __局部注册__
 
 全局注册的组件可以用在其被注册之后的任何 (通过 new Vue) 新创建的 Vue 根实例，也包括其组件树中的所有子组件的模板中。
-
+vmw
 
 
 
@@ -125,3 +125,64 @@ new Vue({
   }
 })
 ```
+
+
+
+
+
+# 监听子组件事件
+
+还是上面的`<blog-post>` 比如里面有个`<button>`点一下本组件里面字体放大
+
+做法是在父组件上`v-on`一个字体号放大的方法(监听)  `v-on:自选一个名字=''`
+
+子组件中调用`$emit`方法触发事件  `v-on:clice='自定义的名字'`
+
+根实例:
+``` JS
+new Vue({
+  el: '#blog-posts-events-demo',
+  data: {
+    posts: [/** */],
+  },
+  methods:{
+    big:function(){
+      this.postFontSize+=1
+    }
+  }
+})
+```
+
+``` HTML
+<div id="blog-posts-events-demo">
+  <div :style="{ fontSize: postFontSize + 'rem' }">
+    <blog-post
+      v-for="post in posts"
+      v-bind:key="post.id"
+      v-bind:post="post"
+      v-on:enlarge-text="big"
+    ></blog-post>
+  </div>
+</div>
+```
+
+组件：
+
+``` JS
+Vue.component('blog-post', {
+  props: ['post'],
+  template: `
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <button v-on:click="$emit('enlarge-text')">
+        Enlarge text
+      </button>
+      <div v-html="post.content"></div>
+    </div>
+  `
+})
+```
+
+
+
+__注意 不可能直接在button上 v-on:click='big' 因为big是父组件那层的方法__

@@ -74,6 +74,19 @@
         v-model.number="age"
         type="number"
     >
+
+    <br><br><br><br><br>
+
+    <div id="blog-posts-events-demo">
+        <div :style="{ fontSize: postFontSize + 'rem' }">
+            <blog-post
+                v-for="post in posts"
+                v-bind:key="post.id"
+                v-bind:post="post"
+                v-on:enlarge="big"
+            ></blog-post>
+        </div>
+    </div>
 </body>
 <script>
     var app=new Vue({
@@ -107,5 +120,38 @@
             selected:''
         }
     })
+
+
+
+
+    Vue.component('blog-post', {
+            props: ['post'],
+            template: `
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <button v-on:click="$emit('enlarge')">
+        Enlarge text
+      </button>
+      <div v-html="post.content"></div>
+    </div>
+  `
+        })
+
+        new Vue({
+                el: '#blog-posts-events-demo',
+                data: {
+                    posts: [
+                              { id: 1, title: 'A', content: 'aaa' },
+                        { id: 2, title: 'B', content: 'bbb' },
+                        { id: 3, title: 'C', content: 'ccc' }
+                    ],
+                    postFontSize: 1
+                },
+                methods: {
+                    big: function () {
+                        this.postFontSize += 1
+                    }
+                }
+            })
     </script>
 </html>
