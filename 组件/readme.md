@@ -83,6 +83,8 @@ vmw
 
 prop是可以在组件上自定义的特性
 
+相当于组件的 `data`
+
 当一个值传递给一个 prop 特性的时候，它就变成了那个 __组件实例__ 的一个属性。
 
 ``` JS
@@ -138,12 +140,14 @@ new Vue({
 
 子组件中调用`$emit`方法触发事件  `v-on:clice='自定义的名字'`
 
+
 根实例:
 ``` JS
 new Vue({
   el: '#blog-posts-events-demo',
   data: {
     posts: [/** */],
+    postFontSize: 1
   },
   methods:{
     big:function(){
@@ -166,8 +170,8 @@ new Vue({
 </div>
 ```
 
-组件：
 
+组件：
 ``` JS
 Vue.component('blog-post', {
   props: ['post'],
@@ -186,3 +190,108 @@ Vue.component('blog-post', {
 
 
 __注意 不可能直接在button上 v-on:click='big' 因为big是父组件那层的方法__
+
+
+
+`$emit`第二个参数
+---
+
+例如我们想让`<blog-post>`组件决定字号增大多少 而不是由 `big`决定
+
+子组件中`v-on:click="$emit('enlarge','0.1')"`
+
+父组件中可以用$event接收`v-on:enlarge="postFontSize += $event"`
+
+
+
+或者就要用方法，比如`v-on:enlarge="big"`的话，此参数会作为第一个参数传入方法中
+
+还是
+``` HTML
+<blog-post
+  ...
+  v-on:enlarge-text="big"
+></blog-post>
+```
+``` JS
+methods: {
+  big: function (enlargeAmount) {
+    // enlargeAmount接收 $emit的第二个参数
+    this.postFontSize += enlargeAmount
+  }
+}
+```
+
+
+
+
+在组件上使用 `v-model`
+===
+
+`<input v-model="searchText">`
+
+等价于
+
+``` HTML
+<input
+  v-bind:value="searchText"
+  v-on:input="searchText = $event.target.value"
+>
+<!-- 这的value是正儿八经的value -->
+<!-- v-on:input 这的input是正儿八经事件 -->
+```
+
+
+而v-model在组件上时是这样的：
+
+```HTML
+<custom-input
+  v-bind:value="searchText"
+  v-on:input="searchText = $event"
+></custom-input>
+<!-- 这的 :value 是prop参数自定义属性 用于子组件中bind正儿八经的value -->
+<!-- 这的v-on:input 是自定义事件 监听子组件中正儿八经的input事件用 -->
+```
+
+
+组件这么写：
+
+``` JS
+Vue.component('custom-input', {
+  props: ['value'],
+  template: `
+    <input
+      v-bind:value="value"
+      v-on:input="$emit('input', $event.target.value)"
+    >
+  `
+})
+```
+``` HTML
+<custom-input v-model="searchText"></custom-input>
+```
+
+我们的组件模板是个`input` 名叫`<custom-input>`
+
+我们想`<custom-input v-model='dataText'>`
+
+那么组件中的`<input>`需要将`value`属性(这个是正儿八经的属性)`:bind`Prop中的`value`,
+
+还要`v-on:input`(这个input是正儿八经的事件)触发父组件中的自定义input事件
+
+
+
+
+
+# 动态组件
+
+比如一个多标签界面切换 十分实用
+
+动态组件通过 Vue 的 `<component>` 元素加一个特殊的 `is` 特性来实现：
+
+``` HTML
+<!-- 组件会在 `currentTabComponent` 改变时改变 -->
+<component v-bind:is="currentTabComponent"></component>
+```
+
+上述示例中 `currentTabComponent`可以是 __已注册组件的名字__ 或 __已注册组件的名字__
