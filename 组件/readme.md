@@ -114,6 +114,8 @@ Vue.component('blog-post', {
   v-bind:key="post.id"
   v-bind:title="post.title"
 ></blog-post>
+<!-- 也等价于 -->
+<blog-post v-bind="post"></blog-post>
 ```
 ``` JS
 new Vue({
