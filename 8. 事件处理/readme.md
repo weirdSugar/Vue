@@ -61,15 +61,19 @@ __vue中还有奇怪的：__
 ```
 
 ``` JS
-<div id="example-3">
-  <button v-on:click="say('hi')">Say hi</button>
-  <button v-on:click="say('what')">Say what</button>
-</div>
+new Vue({
+  el: '#example-3',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
 ```
 
 就是说 ```v-on```后```=```的method还可以带括号传参
 
-__注意这个时候method里面的event事件对象不会自动传入，需要调用时候手动传入$event参数：__
+__注意这个时候JS原生的event事件对象不会自动传入，需要调用时候手动传入$event参数：__
 
 
 ``` HTML
@@ -153,6 +157,10 @@ ___```@click.self.prevent```会阻止对自身的点击__
 <!-- KeyboardEvent.key里面是 ArrowDown -->
 ```
 
+使用 keyCode 特性也是允许的：
+
+```<input v-on:keyup.13="submit">```
+
 
 为了在必要的情况下支持旧浏览器，Vue 提供了绝大多数常用的按键码的别名：
 
@@ -178,7 +186,7 @@ ___系统修饰符__ 以实现仅在按下相应按键时才触发鼠标或键�
 ```.ctrl```
 ```.alt```
 ```.shift```
-```.meta``` ()
+```.meta``` 
 
 
 ``` HTML
